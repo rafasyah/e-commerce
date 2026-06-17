@@ -78,7 +78,19 @@
             >
         </div>
 
-
+        <div class="mb-6">
+            <label class="block text-gray-700 font-semibold mb-2">
+                Jenis Pembayaran
+            </label>
+            <select
+                name="jenis_pembayaran"
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                required
+            >
+                <option value="cod" {{ $product->jenis_pembayaran == 'cod' ? 'selected' : '' }}>Cash on Delivery (COD)</option>
+                <option value="transfer" {{ $product->jenis_pembayaran == 'transfer' ? 'selected' : '' }}>Transfer Bank</option>
+            </select>
+        </div>
 
         <div class="flex gap-4">
             <button

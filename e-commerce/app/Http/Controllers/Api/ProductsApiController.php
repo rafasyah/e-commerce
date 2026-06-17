@@ -22,7 +22,8 @@ class ProductsApiController extends Controller
             'deskripsi' => 'required',
             'harga' => 'required|numeric',
             'stok' => 'required|numeric',
-            'gambar' => 'required|image'
+            'gambar' => 'required|image',
+            'jenis_pembayaran' => 'required|in:cod,transfer'
         ]);
 
         $gambar = $request->file('gambar')->store('products', 'public');
@@ -32,7 +33,8 @@ class ProductsApiController extends Controller
             'deskripsi' => $request->deskripsi,
             'harga' => $request->harga,
             'stok' => $request->stok,
-            'gambar' => $gambar
+            'gambar' => $gambar,
+            'jenis_pembayaran' => $request->jenis_pembayaran
         ]);
 
         return response()->json($product, 201);
@@ -50,7 +52,8 @@ class ProductsApiController extends Controller
             'deskripsi' => 'required',
             'harga' => 'required|numeric',
             'stok' => 'required|numeric',
-            'gambar' => 'nullable|image'
+            'gambar' => 'nullable|image',
+            'jenis_pembayaran' => 'required|in:cod,transfer'
         ]);
 
         $data = [
@@ -64,6 +67,8 @@ class ProductsApiController extends Controller
             $gambar = $request->file('gambar')->store('products', 'public');
             $data['gambar'] = $gambar;
         }
+
+        $data['jenis_pembayaran'] = $request->jenis_pembayaran;
 
         $product->update($data);
 

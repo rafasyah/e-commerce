@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Transactions extends Model
 {
-    protected $fillable = ['user_id', 'product_id', 'jumlah', 'total_harga', 'status_pembayaran', 'jenis_pembayaran'];
+    protected $fillable = ['user_id', 'product_id', 'jumlah', 'total_harga', 'status_pembayaran'];
 
     // Relationships
     public function product()

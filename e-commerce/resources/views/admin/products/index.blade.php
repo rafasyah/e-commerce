@@ -27,6 +27,7 @@
     <th>Nama</th>
     <th>Harga</th>
     <th>Stok</th>
+    <th>Jenis Pembayaran</th>
     <th>Aksi</th>
 </tr>
 </thead>
@@ -41,6 +42,7 @@
     <td class="p-4 font-semibold">{{ $product->nama_barang }}</td>
     <td class="p-4">Rp {{ number_format($product->harga) }}</td>
     <td class="p-4">{{ $product->stok }}</td>
+    <td class="p-4">{{ ucfirst($product->jenis_pembayaran) }}</td>
     <td class="p-4">
         <div class="flex gap-2">
             <a href="{{ route('products.edit', $product) }}" class="bg-blue-500 text-white px-3 py-1 rounded-lg text-sm">Edit</a>

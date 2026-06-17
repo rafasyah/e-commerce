@@ -12,6 +12,7 @@ class Products extends Model
         'harga',
         'stok',
         'gambar',
+        'jenis_pembayaran',
     ];
 
     // Relationships

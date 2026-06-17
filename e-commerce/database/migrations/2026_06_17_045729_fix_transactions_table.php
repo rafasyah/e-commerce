@@ -12,7 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('transactions', function (Blueprint $table) {
-            $table->enum('jenis_pembayaran', ['cod', 'transfer', 'ewallet'])->nullable()->after('status_pembayaran');
+            $table->unsignedBigInteger('user_id')->change();
+            $table->unsignedBigInteger('product_id')->change();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });
     }
 
@@ -22,7 +25,10 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('transactions', function (Blueprint $table) {
-            $table->dropColumn('jenis_pembayaran');
+            $table->dropForeign(['user_id']);
+            $table->dropForeign(['product_id']);
+            $table->string('user_id')->change();
+            $table->string('product_id')->change();
         });
     }
 };

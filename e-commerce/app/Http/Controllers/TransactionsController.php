@@ -14,8 +14,7 @@ class TransactionsController extends Controller
     public function checkout(Request $request, $id)
     {
         $request->validate([
-            'jumlah' => 'required|integer|min:1',
-            'jenis_pembayaran' => 'required|in:cod,transfer,ewallet'
+            'jumlah' => 'required|integer|min:1'
         ]);
 
         $product = Products::findOrFail($id);
@@ -34,7 +33,7 @@ class TransactionsController extends Controller
             'jumlah' => $jumlah,
             'total_harga' => $total,
             'status_pembayaran' => 'pending',
-            'jenis_pembayaran' => $request->jenis_pembayaran
+            'jenis_pembayaran' => $product->jenis_pembayaran
         ]);
 
         // status awal

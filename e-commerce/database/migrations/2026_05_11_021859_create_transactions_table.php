@@ -18,7 +18,6 @@ return new class extends Migration
             $table->integer('jumlah');
             $table->decimal('total_harga', 10, 2);
             $table->enum('status_pembayaran', ['pending', 'paid', 'failed']);
-            $table->enum('jenis_pembayaran', ['cod', 'transfer', 'ewallet']);
             $table->timestamps();
         });
     }

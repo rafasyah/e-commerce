@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('products', function (Blueprint $table) {
-            $table->dropColumn('jenis_pembayaran');
+        Schema::create('order_updates', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('transaction_id')->constrained()->onDelete('cascade');
+            $table->enum('status', ['Proses', 'Packing', 'Pengantaran', 'Selesai'])->default('Proses');
+            $table->timestamps();
         });
     }
 
@@ -21,8 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('products', function (Blueprint $table) {
-            $table->enum('jenis_pembayaran', ['transfer', 'cod'])->after('gambar');
-        });
+        Schema::dropIfExists('order_updates');
     }
 };

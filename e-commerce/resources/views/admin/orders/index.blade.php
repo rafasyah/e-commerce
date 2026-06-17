@@ -47,11 +47,11 @@
     <td class="p-4 font-semibold">#{{ $transaction->id }}</td>
     <td class="p-4">{{ $transaction->product->nama_barang }}</td>
     <td class="p-4">{{ $transaction->jumlah }}</td>
-    <td class="p-4">
-        <span class="bg-blue-100 text-blue-600 px-2 py-1 rounded-lg text-sm">
-            {{ ucfirst($transaction->jenis_pembayaran) }}
-        </span>
-    </td>
+<td class="p-4">
+    <span class="bg-blue-100 text-blue-600 px-2 py-1 rounded-lg text-sm">
+        {{ ucfirst($transaction->product->jenis_pembayaran) }}
+    </span>
+</td>
     <td class="p-4">Rp {{ number_format($transaction->total_harga) }}</td>
     <td class="p-4">
         <span class="bg-orange-100 text-orange-600 px-3 py-1 rounded-lg">
